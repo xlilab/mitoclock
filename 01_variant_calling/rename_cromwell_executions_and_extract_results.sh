@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-#Description: 该脚本需放置于gatk-workflows目录下运行
-#Author: Wang Zhenguo
-#Created Time: 2020/04/15 20:24
 
 set -e -u -o pipefail
 ulimit -u 65535

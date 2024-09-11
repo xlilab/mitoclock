@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-#Description: 
-#Author: Wang Zhenguo
-#Created Time: 2022/01/07 10:29
 
 echo "Usage: sh $0 [ TISSUE ]"
 

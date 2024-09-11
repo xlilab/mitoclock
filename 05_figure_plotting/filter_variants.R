@@ -1,4 +1,4 @@
-source("R_scripts_clonal_expansion_paper/formal_analysis/01_read_fixed_files.R")
+source("read_fixed_files.R")
 
 # Functions ---------------------------------------------------------------
 
@@ -151,4 +151,4 @@ tissue_n <- Vmtrna_Igtex_T %>%
   group_by(tissue) %>% 
   summarise(n_tissue = n())
 
-# save.image("20240423.Rdata")
+# save.image("20240909.Rdata")

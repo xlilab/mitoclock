@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-#Description: 在depth所在文件夹运行
-#Author: Wang Zhenguo
-#Created Time: 2020/08/14 15:28
 
 set -e -u
 

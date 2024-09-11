@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
-#Description: 该脚本需放置于组织所在目录运行
-#Author: Wang Zhenguo
-#Created Time: 2021/12/28 20:26
 
-echo "Usage: $0 [ tissue_file full_out_dir!!! ]"
+echo "Usage: $0 [ tissue_file out_dir ]"
 
 set -e -u -o pipefail
 
