@@ -1,12 +1,27 @@
 
 # Figure S2 ---------------------------------------------------------------
 
-# col 1
+# col 0
 data_plot <- Vmtrna_Igtex_T %>% 
   select(tissue) %>% 
   unique() %>% 
   left_join(gtex_color) %>% 
   arrange(desc(tissue))
+p0 <- data_plot %>% 
+  ggplot(aes(tissue,1,fill = tissue))+
+  geom_bar(stat = "identity")+
+  scale_fill_manual(values = gtex_color$tissue_color_hex)+
+  scale_y_continuous(breaks = c(0,1))+
+  coord_flip()+
+  theme_few()+
+  theme(axis.line = element_blank(),
+        axis.text = element_blank(),
+        axis.title = element_blank(),
+        axis.ticks = element_blank(),
+        panel.border = element_blank(),
+        legend.position = "none")
+
+# col 1
 p1 <- data_plot %>% 
   ggplot(aes(y = tissue,x = 0))+
   geom_text(label = unique(data_plot$tissue_site_detail),hjust = 0)+
@@ -122,7 +137,7 @@ p6 <- data_plot %>%
         legend.position = "right",
         axis.text.x = element_text(size = 10))
 
-p1 %>% insert_right(p2,width = .4) %>% insert_right(p5,width = .4) %>% insert_right(p6,width = .4) %>% insert_right(p3,width = .4) %>% insert_right(p4,width = .4)
+p1 %>% insert_left(p0,width = .05) %>% insert_right(p2,width = .4) %>% insert_right(p5,width = .4) %>% insert_right(p6,width = .4) %>% insert_right(p3,width = .4) %>% insert_right(p4,width = .4) # 12*10
 
 # Figure S3 ---------------------------------------------------------------
 

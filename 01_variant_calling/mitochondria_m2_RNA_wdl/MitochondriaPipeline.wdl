@@ -273,7 +273,7 @@ task RevertSam {
     input_bam: "aligned bam"
   }
   command {
-    java -Xmx1000m -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 -jar /home/wangzhenguo/tools/picard.jar \
+    java -Xmx1000m -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 -jar /path_to/picard.jar \
     RevertSam \
     INPUT=~{input_bam} \
     OUTPUT_BY_READGROUP=false \
@@ -312,7 +312,7 @@ task CoverageAtEveryBase {
   command <<<
     set -e
 
-    java -jar -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 /home/wangzhenguo/tools/picard.jar CollectHsMetrics \
+    java -jar -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 /path_to/picard.jar CollectHsMetrics \
       I=~{input_bam_regular_ref} \
       R=~{ref_fasta} \
       PER_BASE_COVERAGE=non_control_region.tsv \
@@ -322,7 +322,7 @@ task CoverageAtEveryBase {
       COVMAX=20000 \
       SAMPLE_SIZE=1
 
-    java -jar -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 /home/wangzhenguo/tools/picard.jar CollectHsMetrics \
+    java -jar -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 /path_to/picard.jar CollectHsMetrics \
       I=~{input_bam_shifted_ref} \
       R=~{shifted_ref_fasta} \
       PER_BASE_COVERAGE=control_region_shifted.tsv \

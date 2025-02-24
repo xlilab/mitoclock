@@ -21,19 +21,23 @@ formula <- res_lm %>%
   mutate(across(where(is.numeric),~ round(.,2))) %>% 
   mutate(formula = str_c(" = ",intercept," + ",beta," × Age")) %>% 
   pull(formula)
+formula <- c(": + 0.02 /y",": + 0.09 /y")
 label <- str_c(c("L","Non L"),formula)
 ggplot(data,aes(AGE,HFN,color = Macrogroup,fill = Macrogroup))+
   geom_smooth(method = "lm")+
+  geom_point(aes(color = Macrogroup,fill = Macrogroup,shape = Macrogroup),
+             size = 1.5, alpha = 0.7)+
   scale_fill_manual(values = c("#1f77b4","#ff7f0e")[c(2,1)],labels = label)+
   scale_color_manual(values = c("#1f77b4","#ff7f0e")[c(2,1)],labels = label)+
   xlab("Age")+
   ylab("Number of mutations")+
   ggtitle("Skin - Sun Exposed")+
   guides(fill = guide_legend(title = NULL),
-         color = guide_legend(title = NULL))+
+         color = guide_legend(title = NULL),
+         shape = guide_none())+
   theme_pubr()+
-  theme(legend.position =c(.3,.9),
-        plot.title = element_text(hjust = .5))
+  theme(legend.position =c(.25,.9),
+        plot.title = element_text(hjust = .5)) # 4*5
 
 # Figure 5B ---------------------------------------------------------------
 
@@ -133,20 +137,24 @@ formula <- res_lm %>%
   mutate(across(where(is.numeric),~ round(.,2))) %>% 
   mutate(formula = str_c(" = ",intercept," + ",beta," × Age")) %>% 
   pull(formula)
+formula <- c(": + 0.02 /y",": + 0.02 /y")
 label <- str_c(c("Male","Female"),formula)
 ggplot(data,aes(AGE,HFN,color = Macrogroup,fill = Macrogroup))+
   geom_smooth(method = "lm")+
+  geom_point(aes(color = Macrogroup,fill = Macrogroup,shape = Macrogroup),
+             size = 1.5, alpha = 0.7)+
   scale_fill_manual(values = c("#b5d1ff","#657691")[c(2,1)],labels = label[c(2,1)])+
   scale_color_manual(values = c("#b5d1ff","#657691")[c(2,1)],labels = label[c(2,1)])+
   xlab("Age")+
   ylab("Number of mutations")+
   ggtitle("Breast - Mammary tissue")+
-  coord_cartesian(ylim = c(0,6))+
+  coord_cartesian(ylim = c(0,12))+
   guides(fill = guide_legend(title = NULL),
-         color = guide_legend(title = NULL))+
+         color = guide_legend(title = NULL),
+         shape = guide_none())+
   theme_pubr()+
-  theme(legend.position =c(.3,.9),
-        plot.title = element_text(hjust = .5))
+  theme(legend.position =c(.25,.9),
+        plot.title = element_text(hjust = .5)) # 4*5
 
 # right
 data_plot <- Vmtrna_Igtex_T_HFN %>% 
@@ -180,21 +188,25 @@ formula <- res_lm %>%
   mutate(across(where(is.numeric),~ round(.,2))) %>% 
   mutate(formula = str_c(" = ",intercept," + ",beta," × Age")) %>% 
   pull(formula)
+formula <- c(": + 0 /y",": + 0.14 /y")
 label <- str_c(tissues,formula)
 
 ggplot(data_plot,aes(AGE,HFN,color = tissue_site_detail,fill = tissue_site_detail))+
   geom_smooth(method = "lm")+
+  geom_point(aes(color = tissue_site_detail,fill = tissue_site_detail,shape = tissue_site_detail),
+             size = 1.5, alpha = 0.7)+
   scale_fill_manual(values = c("#FFAAFF","#AAAAAA")[c(2,1)],labels = label[c(2,1)])+
   scale_color_manual(values = c("#FFAAFF","#AAAAAA")[c(2,1)],labels = label[c(2,1)])+
   xlab("Age")+
   ylab("Number of mutations")+
   ggtitle("Reproductive organs")+
   guides(fill = guide_legend(title = NULL),
-         color = guide_legend(title = NULL))+
+         color = guide_legend(title = NULL),
+         shape = guide_none())+
   theme_pubr()+
   # theme(legend.position = "right")
-  theme(legend.position =c(.3,.9),
-        plot.title = element_text(hjust = .5))
+  theme(legend.position =c(.25,.9),
+        plot.title = element_text(hjust = .5)) # 4*5
 
 # Figure 5D ---------------------------------------------------------------
 

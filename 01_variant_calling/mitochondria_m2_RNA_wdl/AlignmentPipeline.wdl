@@ -83,14 +83,14 @@ task AlignAndMarkDuplicates {
 
     # set the bash variable needed for the command-line
     bash_ref_fasta=~{ref_fasta}
-    java -Xmx5000m -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 -jar /home/wangzhenguo/tools/picard.jar \
+    java -Xmx5000m -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 -jar /path_to/picard.jar \
       SamToFastq \
       INPUT=~{input_bam} \
       FASTQ=/dev/stdout \
       INTERLEAVE=true \
       NON_PF=true | \
     ~{bwa_commandline} /dev/stdin - 2> >(tee ~{output_bam_basename}.bwa.stderr.log >&2) | \
-    java -Xmx3000m -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 -jar /home/wangzhenguo/tools/picard.jar \
+    java -Xmx3000m -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 -jar /path_to/picard.jar \
       MergeBamAlignment \
       VALIDATION_STRINGENCY=SILENT \
       EXPECTED_ORIENTATIONS=FR \
@@ -119,7 +119,7 @@ task AlignAndMarkDuplicates {
       UNMAP_CONTAMINANT_READS=true \
       ADD_PG_TAG_TO_READS=false
 
-    java -Xmx4000m -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 -jar /home/wangzhenguo/tools/picard.jar \
+    java -Xmx4000m -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 -jar /path_to/picard.jar \
       MarkDuplicates \
       INPUT=mba.bam \
       OUTPUT=md.bam \
@@ -130,7 +130,7 @@ task AlignAndMarkDuplicates {
       CLEAR_DT="false" \
       ADD_PG_TAG_TO_READS=false
 
-    java -Xmx4000m -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 -jar /home/wangzhenguo/tools/picard.jar \
+    java -Xmx4000m -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 -jar /path_to/picard.jar \
       SortSam \
       INPUT=md.bam \
       OUTPUT=~{output_bam_basename}.bam \

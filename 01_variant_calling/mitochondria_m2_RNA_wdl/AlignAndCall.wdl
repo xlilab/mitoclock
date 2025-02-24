@@ -206,7 +206,7 @@ task GetContamination {
   command <<<
   set -e
   PARENT_DIR="$(dirname "~{input_vcf}")"
-  java -jar /home/wangzhenguo/tools/haplocheckCLI.jar "${PARENT_DIR}"
+  java -jar /path_to/haplocheckCLI.jar "${PARENT_DIR}"
 
   sed 's/\"//g' output >  output-noquotes
 
@@ -270,14 +270,14 @@ task LiftoverAndCombineVcfs {
   command<<<
     set -e
 
-    java -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 -jar /home/wangzhenguo/tools/picard.jar LiftoverVcf \
+    java -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 -jar /path_to/picard.jar LiftoverVcf \
       I=~{shifted_vcf} \
       O=~{basename}.shifted_back.vcf \
       R=~{ref_fasta} \
       CHAIN=~{shift_back_chain} \
       REJECT=~{basename}.rejected.vcf
 
-    java -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 -jar /home/wangzhenguo/tools/picard.jar MergeVcfs \
+    java -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 -jar /path_to/picard.jar MergeVcfs \
       I=~{basename}.shifted_back.vcf \
       I=~{vcf} \
       O=~{basename}.merged.vcf

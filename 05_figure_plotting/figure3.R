@@ -114,6 +114,10 @@ p_res <- apply(conditions,1,function(x){
                 p = res[2,4]))
 })
 p_res <- do.call(rbind,p_res)
+sig_ids <- p_res %>% 
+  mutate(q = p.adjust(p,method = "fdr")) %>% 
+  filter(q < .05) %>% 
+  select(tissue,ID,beta)
 
 data_plot <- sig_ids[c(4:5,7:20,22:30,32:33,35,44:52),] %>% 
   left_join(Vmtrna_Gmt) %>% 

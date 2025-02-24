@@ -8,16 +8,15 @@ set -e -u -o pipefail
 echo "Usage: sh $0 [VCF]"
 
 VCF=$1
-REF=/home/wangzhenguo/data/datasets/ref/gatk/hg38/v0/chrM/Homo_sapiens_assembly38.chrM.fasta
+REF=/path_to/gatk/hg38/v0/chrM/Homo_sapiens_assembly38.chrM.fasta
 
-alias vep=/picb/lilab/tools/ensembl-vep-release-101/vep
 vep --species homo_sapiens \
 	--assembly GRCh38 \
 	--input_file $VCF \
 	--format vcf \
 	--output_file `basename $VCF .vcf.gz`.vep_distance0.everything.vcf \
 	--cache \
-	--dir_cache /picb/lilab/annotation/VEP/cache_101 \
+	--dir_cache /path_to/VEP/cache_101 \
 	--fasta $REF \
 	--cache_version 101 \
 	--distance 0 \
@@ -27,6 +26,6 @@ vep --species homo_sapiens \
 	--force_overwrite \
 	--everything \
 	--distance 0 \
-	--plugin LoF,loftee_path:/picb/lilab/annotation/VEP/LOFTEE/loftee,gerp_bigwig:/picb/lilab/annotation/VEP/LOFTEE/gerp_conservation_scores.homo_sapiens.GRCh38.bw,human_ancestor_fa:/picb/lilab/annotation/VEP/LOFTEE/human_ancestor.fa.gz,conservation_file:/picb/lilab/annotation/VEP/LOFTEE/loftee.sql,phylocsf_data:/picb/lilab/annotation/VEP/LOFTEE/phylocsf_gerp.sql \
-	--custom /picb/lilab/annotation/clinvar/GRCh38/clinvar_20230121.vcf.gz,ClinVar,vcf,exact,0,CLNSIG,CLNREVSTAT,CLNDN \
-	--custom /picb/lilab/annotation/gnomad/gnomAD/r3.x/gnomad.genomes.v3.1.sites.chrM.vcf.gz,gnomAD,vcf,exact,0,AN,AC_hom,AF_hom,AC_het,AF_het,max_hl 
+	--plugin LoF,loftee_path:/path_to/VEP/LOFTEE/loftee,gerp_bigwig:/path_to/VEP/LOFTEE/gerp_conservation_scores.homo_sapiens.GRCh38.bw,human_ancestor_fa:/path_to/VEP/LOFTEE/human_ancestor.fa.gz,conservation_file:/path_to/VEP/LOFTEE/loftee.sql,phylocsf_data:/path_to/VEP/LOFTEE/phylocsf_gerp.sql \
+	--custom /path_to/clinvar/GRCh38/clinvar_20230121.vcf.gz,ClinVar,vcf,exact,0,CLNSIG,CLNREVSTAT,CLNDN \
+	--custom /path_to/gnomad/gnomAD/r3.x/gnomad.genomes.v3.1.sites.chrM.vcf.gz,gnomAD,vcf,exact,0,AN,AC_hom,AF_hom,AC_het,AF_het,max_hl 

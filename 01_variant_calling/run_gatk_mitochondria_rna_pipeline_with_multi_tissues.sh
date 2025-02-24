@@ -3,10 +3,10 @@
 set -e -u -o pipefail
 ulimit -u 65535
 
-echo "Usage: sh $0 [ tissue.list ]"
+echo "Usage: sh $0 [ tissue.list bam_dir ]"
 
 TISSUES=$1
-BAMDIR=/home/wangzhenguo/data/datasets/gtex/RNA_bam/v8/RNAseq_bam/
+BAMDIR=$2
 WORKDIR=`pwd`
 
 run_single_tissue(){
@@ -21,10 +21,10 @@ run_single_tissue(){
 	else
 		mkdir $tissue
 		cd $tissue
-		ln -s /home/wangzhenguo/tools/cromwell-52.jar
-		ln -s /home/wangzhenguo/code/pipeline/mitochondria_m2_RNA_wdl/mitochondria_m2_RNA_wdl/
-		ln -s /home/wangzhenguo/code/pipeline/mitochondria_m2_RNA_wdl/rename_cromwell_executions_and_extract_results.sh 
-		ln -s /home/wangzhenguo/code/pipeline/mitochondria_m2_RNA_wdl/run_gatk_mitochondria_rna_pipeline_with_multi_samples.sh
+		ln -s /path_to/cromwell-52.jar
+		ln -s ../mitochondria_m2_RNA_wdl/
+		ln -s ../rename_cromwell_executions_and_extract_results.sh 
+		ln -s ../run_gatk_mitochondria_rna_pipeline_with_multi_samples.sh
 	fi
 	
 	if [ -f remained_sample.list ]
@@ -35,7 +35,6 @@ run_single_tissue(){
 		fi
 	else
 		ls $BAMDIR/$tissue/*bam |\
-			grep -f /home/wangzhenguo/data/scientific_project/mitochondrial_genome/variant_calling/gtex_838_individuals.id |\
 			sed 's/.*\(GTEX-.\{2,\}\.Aligned\).*/\1/;s/\.Aligned//' \
 			> gtex_${tissue}_rnaseq.list
 		wait

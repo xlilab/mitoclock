@@ -10,7 +10,7 @@ out_dir=`readlink -f $2`
 for tissue in `cat $tissue_file`
 do
 	echo "processing $tissue..."
-	cd $tissue/output_vcf/
+	cd ../01_variant_calling/$tissue/output_vcf/
 	
 	#################################################
 
