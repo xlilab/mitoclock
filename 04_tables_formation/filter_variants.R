@@ -151,4 +151,4 @@ tissue_n <- Vmtrna_Igtex_T %>%
   group_by(tissue) %>% 
   summarise(n_tissue = n())
 
-# save.image("20240909.Rdata")
+save.image("analysis_base.Rdata")

@@ -1,6 +1,6 @@
 library(tidyverse)
 
-cpn_files <- dir("~/data/scientific_project/mitochondrial_genome/copy_number/RNA_estimate/",pattern = "copy_number.txt",full.names = T)
+cpn_files <- dir("../03_copy_number_calculation/",pattern = "copy_number.txt",full.names = T)
 cpn_full <- data.frame()
 for(file in cpn_files){
   data <- read_tsv(file)
@@ -11,4 +11,4 @@ for(file in cpn_files){
   cpn_full <- rbind(cpn_full,data)
 }
 cpn_full %>% 
-  write_tsv("~/data/scientific_project/mitochondrial_genome/tables/20221209_Igtex_T_CPN.txt")
+  write_tsv("Igtex_T_CPN.txt")

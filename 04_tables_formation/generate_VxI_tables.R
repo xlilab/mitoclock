@@ -34,21 +34,21 @@ process_single_vcf <- function(file){
   return(data)
 }
 
-tissues <- read.table("~/data/pipeline/mitochondria_m2_RNA_wdl/GTEx_v8_new/gtex_49_tissues.list",header = F) %>%
+tissues <- read.table("../01_variant_calling/gtex_tissues.list",header = F) %>%
   .$V1
 # tissues <- c("Brain-Amygdala","Cells-Culturedfibroblasts","Cells-EBV-transformedlymphocytes","Liver","Testis")
 files <- lapply(tissues,function(x){
-  dir(str_c("~/data/pipeline/mitochondria_m2_RNA_wdl/GTEx_v8_new/",x,"/output_vcf/"),pattern = "original.vcf$",full.names = T)
+  dir(str_c("../01_variant_calling/",x,"/output_vcf/"),pattern = "original.vcf$",full.names = T)
 })
 files <- do.call(c,files)
 
 data_list <- lapply(files,process_single_vcf)
 data <- do.call(rbind,data_list)
-write_tsv(data,"~/data/scientific_project/mitochondrial_genome/tables/20230413_Vmtrna_Igtex_T_original.txt")
+write_tsv(data,"Vmtrna_Igtex_T_original.txt")
 
 # Fisher  -----------------------------------------------------------------
 
-Vmtrna_Igtex_T_raw <- fread("~/data/scientific_project/mitochondrial_genome/tables/20230413_Vmtrna_Igtex_T_original.txt")
+Vmtrna_Igtex_T_raw <- fread("Vmtrna_Igtex_T_original.txt")
 Vmtrna_Igtex_T_raw <- Vmtrna_Igtex_T_raw %>%
   group_by(ID,Indiv,tissue) %>%
   mutate(log_OR_L = fisher.test(matrix(c(ref_AD_F,ref_AD_R,alt_AD_F,alt_AD_R),nrow = 2))[[2]][1] %>%
@@ -56,7 +56,7 @@ Vmtrna_Igtex_T_raw <- Vmtrna_Igtex_T_raw %>%
          log_OR_H = fisher.test(matrix(c(ref_AD_F,ref_AD_R,alt_AD_F,alt_AD_R),nrow = 2))[[2]][2] %>%
            log2()) %>%
   ungroup()
-fwrite(Vmtrna_Igtex_T_raw,"~/data/scientific_project/mitochondrial_genome/tables/20230413_Vmtrna_Igtex_T_original_fisher.txt",quote = F,sep = "\t")
+fwrite(Vmtrna_Igtex_T_raw,"Vmtrna_Igtex_T_original_fisher.txt",quote = F,sep = "\t")
 
 # Binomial test -----------------------------------------------------------
 
@@ -80,9 +80,9 @@ calc_sequencing_error_p <- function(data){
   return(data)
 }
 
-Vmtrna_Igtex_T_raw <- fread("~/data/scientific_project/mitochondrial_genome/tables/20230413_Vmtrna_Igtex_T_original_fisher.txt")
+Vmtrna_Igtex_T_raw <- fread("Vmtrna_Igtex_T_original_fisher.txt")
 Vmtrna_Igtex_T_raw <- calc_sequencing_error_p(Vmtrna_Igtex_T_raw)
-fwrite(Vmtrna_Igtex_T_raw,"~/data/scientific_project/mitochondrial_genome/tables/20230530_Vmtrna_Igtex_T_original_fisher_binomp.txt",quote = F,sep = "\t")
+fwrite(Vmtrna_Igtex_T_raw,"Vmtrna_Igtex_T_original_fisher_binomp.txt",quote = F,sep = "\t")
 
 # Beta-binomial test ------------------------------------------------------
 
@@ -125,10 +125,10 @@ calc_sequencing_error_p <- function(data,beta_a_b){
   return(data)
 }
 
-beta_a_b <- fread("~/data/scientific_project/mitochondrial_genome/R_work_directory/heteroplasmy/20230207_beta_binomial_a_b_rna.txt")
-Vmtrna_Igtex_T_raw <- fread("~/data/scientific_project/mitochondrial_genome/tables/20230530_Vmtrna_Igtex_T_original_fisher_binomp.txt")
+beta_a_b <- fread("beta_binomial_a_b_rna.txt")
+Vmtrna_Igtex_T_raw <- fread("Vmtrna_Igtex_T_original_fisher_binomp.txt")
 Vmtrna_Igtex_T_raw <- calc_sequencing_error_p(Vmtrna_Igtex_T_raw,beta_a_b)
-fwrite(Vmtrna_Igtex_T_raw,"~/data/scientific_project/mitochondrial_genome/tables/20230530_Vmtrna_Igtex_T_original_fisher_binomp_betabinomp.txt",quote = F,sep = "\t")
+fwrite(Vmtrna_Igtex_T_raw,"Vmtrna_Igtex_T_original_fisher_binomp_betabinomp.txt",quote = F,sep = "\t")
 
 # Beta-binomial test (downsample) -----------------------------------------
 
@@ -149,10 +149,10 @@ calc_sequencing_error_p <- function(data,beta_a_b){
   return(data)
 }
 
-beta_a_b <- fread("~/data/scientific_project/mitochondrial_genome/R_work_directory/heteroplasmy/20230207_beta_binomial_a_b_rna.txt")
-Vmtrna_Igtex_T_raw <- fread("~/data/scientific_project/mitochondrial_genome/tables/20230530_Vmtrna_Igtex_T_original_fisher_binomp_betabinomp.txt")
+beta_a_b <- fread("beta_binomial_a_b_rna.txt")
+Vmtrna_Igtex_T_raw <- fread("Vmtrna_Igtex_T_original_fisher_binomp_betabinomp.txt")
 Vmtrna_Igtex_T_raw <- calc_sequencing_error_p(Vmtrna_Igtex_T_raw,beta_a_b)
-fwrite(Vmtrna_Igtex_T_raw,"~/data/scientific_project/mitochondrial_genome/tables/20230711_Vmtrna_Igtex_T_original_fisher_binomp_betabinomp_downsample.txt",quote = F,sep = "\t")
+fwrite(Vmtrna_Igtex_T_raw,"Vmtrna_Igtex_T_original_fisher_binomp_betabinomp_downsample.txt",quote = F,sep = "\t")
 
 # Pmtrna_Igtex_T ----------------------------------------------------------
 
@@ -169,18 +169,18 @@ process_single_coverage <- function(file){
   return(data)
 }
 
-tissues <- read.table("~/data/pipeline/mitochondria_m2_RNA_wdl/GTEx_v8_new/gtex_49_tissues.list",header = F) %>%
+tissues <- read.table("../01_variant_calling/gtex_tissues.list",header = F) %>%
   .$V1
 for(i in list(1:10,11:20,21:30,31:40,41:49)){
   files <- lapply(tissues[i],function(x){
-    dir(str_c("~/data/pipeline/mitochondria_m2_RNA_wdl/GTEx_v8_new/",x,"/output_coverage/"),pattern = "coverage.tsv$",full.names = T)
+    dir(str_c("../01_variant_calling/gtex_tissues.list/",x,"/output_coverage/"),pattern = "coverage.tsv$",full.names = T)
   })
   files <- do.call(c,files)
 
   data_list <- lapply(files,process_single_coverage)
   data <- do.call(rbind,data_list)
   print(i)
-  fwrite(data,str_c("~/data/scientific_project/mitochondrial_genome/tables/20230529_Pmtrna_Igtex_T_coverage_",str_c(range(i),collapse = "to"),".txt"),quote = F,sep = "\t")
+  fwrite(data,str_c("Pmtrna_Igtex_T_coverage_",str_c(range(i),collapse = "to"),".txt"),quote = F,sep = "\t")
 }
 
 # haplocheck --------------------------------------------------------------
@@ -195,13 +195,13 @@ process_single_haplocheck <- function(file){
   return(data)
 }
 
-tissues <- read.table("~/data/pipeline/mitochondria_m2_RNA_wdl/GTEx_v8_new/gtex_49_tissues.list",header = F) %>%
+tissues <- read.table("../01_variant_calling/gtex_tissues.list",header = F) %>%
   .$V1
 files <- lapply(tissues,function(x){
-  dir(str_c("~/data/pipeline/mitochondria_m2_RNA_wdl/GTEx_v8_new/",x,"/"),pattern = "haplocheck.txt",full.names = T)
+  dir(str_c("../01_variant_calling/",x,"/"),pattern = "haplocheck.txt",full.names = T)
 })
 files <- do.call(c,files)
 
 data_list <- lapply(files,process_single_haplocheck)
 data <- do.call(rbind,data_list)
-write_tsv(data,"~/data/scientific_project/mitochondrial_genome/tables/20230529_Igtex_T_haplocheck.txt")
+write_tsv(data,"Igtex_T_haplocheck.txt")

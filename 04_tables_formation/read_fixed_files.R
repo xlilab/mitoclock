@@ -95,7 +95,7 @@ chrM_gtf <- rtracklayer::import("~/data/scientific_project/mitochondrial_genome/
 
 # Color information
 gtex_color <- fread("~/data/datasets/gtex/v8/gtex_tissue_colors_correct.txt")
-gtex_49_tissues <- read_tsv("~/data/scientific_project/mitochondrial_genome/copy_number/RNA_estimate/gtex_49_tissues.list",col_names = F) %>% 
+gtex_49_tissues <- read_tsv("../01_variant_calling/gtex_tissues.list",col_names = F) %>% 
   filter(!X1 %in% c("Cells-Culturedfibroblasts","Cells-EBV-transformedlymphocytes")) %>% 
   pull(X1)
 gtex_color <- gtex_color %>% 
@@ -115,7 +115,7 @@ gtex_color <- gtex_color %>%
                               ifelse(tissue %in% mesoderm,"mesoderm","ectoderm")))
 
 # Indiv information
-Igtex <- fread("~/data/scientific_project/mitochondrial_genome/tables/20220311_Igtex.txt") %>% 
+Igtex <- fread("Igtex.txt") %>% 
   rename(Indiv = SUBJID) %>% 
   mutate(SEX = ifelse(SEX == 1,"M","F"))
 gtex_haplogroup <- fread("~/data/scientific_project/mitochondrial_genome/variant_calling/gtex_838_individuals.haplogroup",select = 1:2) %>% 
@@ -125,7 +125,7 @@ Igtex <- Igtex %>%
   left_join(gtex_haplogroup,by = c("Indiv" = "SampleID"))
 
 # Tissue information
-Igtex_T <- fread("~/data/scientific_project/mitochondrial_genome/tables/20230312_Igtex_T.txt") %>% 
+Igtex_T <- fread("Igtex_T.txt") %>% 
   mutate(Indiv = str_extract(SAMPID,"GTEX-\\w+")) %>% 
   rename(tissue_site_detail = SMTSD) %>% 
   filter(SMAFRZE == "RNASEQ") %>% 
@@ -133,14 +133,14 @@ Igtex_T <- fread("~/data/scientific_project/mitochondrial_genome/tables/20230312
   filter(!is.na(tissue))
 
 # Coverage
-filt_coverage_list <- readRDS("20230530_Pmtrna_Igtex_T_coverage_stat.rds")
+filt_coverage_list <- readRDS("Pmtrna_Igtex_T_coverage_stat.rds")
 filt_sample_coverage <- do.call(rbind,lapply(filt_coverage_list,"[[",1))
 filt_pos_10bp <- do.call(c,lapply(filt_coverage_list,"[[",2)) %>% unique()
 Igtex_T_med_coverage <- do.call(rbind,lapply(filt_coverage_list,"[[",3))
 Pmtrna_T_coverage <- do.call(rbind,lapply(filt_coverage_list,"[[",4))
 
 # Contamination
-Igtex_T_haplocheck <- fread("~/data/scientific_project/mitochondrial_genome/tables/20230529_Igtex_T_haplocheck.txt")
+Igtex_T_haplocheck <- fread("Igtex_T_haplocheck.txt")
 filt_contamination <- Igtex_T_haplocheck %>% 
   filter(Contamination == "YES") %>% 
   select(Indiv,tissue)
@@ -247,17 +247,17 @@ Igtex_T_xCell_score <- fread("~/data/scientific_project/mitochondrial_genome/tab
   filter(!tissue %in% c("Cells-Culturedfibroblasts","Cells-EBV-transformedlymphocytes"))
 
 # Igtex_T_CPN
-Igtex_T_CPN <- fread("~/data/scientific_project/mitochondrial_genome/tables/20221209_Igtex_T_CPN.txt")
+Igtex_T_CPN <- fread("Igtex_T_CPN.txt")
 
 # Vmtrna_Ipancreas8_C
 Vmtrna_Ipancreas8_C <- fread("~/data/scientific_project/mitochondrial_genome/tables/20231123_Vmtrna_Ipancreas8_C_filtered.txt")
 
 # Vmtrna_Igtex_T table
-Vmtrna_Igtex_T_raw <- fread("~/data/scientific_project/mitochondrial_genome/tables/20230530_Vmtrna_Igtex_T_original_fisher_binomp_betabinomp.txt") %>%
+Vmtrna_Igtex_T_raw <- fread("Vmtrna_Igtex_T_original_fisher_binomp_betabinomp.txt") %>%
   filter(!tissue %in% c("Cells-Culturedfibroblasts","Cells-EBV-transformedlymphocytes"))
 
 # Vmtrna_Igtex_T full table
-Vmtrna_Igtex_T_raw_include_indel <- fread("~/data/scientific_project/mitochondrial_genome/tables/20230529_Vmtrna_Igtex_T_original.txt") %>%
+Vmtrna_Igtex_T_raw_include_indel <- fread("Vmtrna_Igtex_T_original.txt") %>%
   filter(!tissue %in% c("Cells-Culturedfibroblasts","Cells-EBV-transformedlymphocytes"))
 
 # Rename tissue name

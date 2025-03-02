@@ -43,7 +43,7 @@ filt_10bp_multi_tissue <- function(data,gtex_tissues){
   return(filt_pos)
 }
 
-files <- dir("~/data/scientific_project/mitochondrial_genome/tables/","20230529_Pmtrna_Igtex_T_coverage",full.names = T)
+files <- dir("./","Pmtrna_Igtex_T_coverage",full.names = T)
 filt_coverage_list <- lapply(files,function(file){
   Pmtrna_Igtex_T_coverage <- fread(file)
 
@@ -68,4 +68,4 @@ filt_coverage_list <- lapply(files,function(file){
               med_coverage,
               mean_sd_coverage))
 })
-saveRDS(filt_coverage_list,"20230530_Pmtrna_Igtex_T_coverage_stat.rds")
+saveRDS(filt_coverage_list,"Pmtrna_Igtex_T_coverage_stat.rds")

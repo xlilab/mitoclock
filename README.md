@@ -20,6 +20,22 @@ Unix packages
 - tabix
 - bgzip
 
+R packages
+- tidyverse
+- data.table
+- VGAM
+- vcfR
+- roll
+- ggpubr
+- boot
+- ComplexHeatmap
+- ggbeeswarm
+- aplot
+- ggtree
+- ggthemes
+- ggpie
+- circlize
+
 ## Download required files
 Download from https://console.cloud.google.com/storage/browser/genomics-public-data/references/hg38/v0 :
 - files included in 01_variant_calling/mitochondria_m2_RNA_wdl/MitochondriaPipeline.inputs.json
@@ -54,7 +70,17 @@ bash merge_tissue_vcfs_and_annotate.sh out_dir
 ## Copy number calculation
 ```
 cd 03_copy_number_calculation
-bash calc_gtex_mt_chr_coverage.sh
+bash calc_gtex_mt_chr_coverage.sh sample.list
 bash calc_gtex_tissue_mt_copy_number.sh
 bash estimate_RNA_copy_number.sh
+```
+## Tables formation
+```
+cd 04_tables_formation
+Rscript estimate_sequencing_error_beta-binomial.R
+Rscript generate_VxI_tables.R
+Rscript processing_Pmtrna_Igtex_T_coverage.R
+Rscript generate_Igtex_T_CPN.R
+Rscript read_fixed_files.R
+Rscript filter_variants.R
 ```

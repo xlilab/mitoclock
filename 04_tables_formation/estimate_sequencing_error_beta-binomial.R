@@ -79,7 +79,7 @@ estimate_beta_binomial_a_b <- function(data){
   return(res)
 }
 
-mpileup_Vmtrna_Igtex_T_36indiv <- fread("~/data/scientific_project/mitochondrial_genome/tables/20230104_mpileup_Vmtrna_Igtex_T_36_subset_sample.txt")
+mpileup_Vmtrna_Igtex_T_36indiv <- fread("mpileup_Vmtrna_Igtex_T_36_subset_sample.txt")
 
 ### choose one tissue for each individual
 set.seed(1234)
@@ -92,4 +92,4 @@ mpileup_Vmtrna_Igtex_T_36sample <- mpileup_Vmtrna_Igtex_T_36indiv %>%
   inner_join(indiv_tissue_36)
 
 beta_binomial_a_b_rna <- estimate_beta_binomial_a_b(mpileup_Vmtrna_Igtex_T_36sample)
-write_tsv(beta_binomial_a_b_rna,"20230207_beta_binomial_a_b_rna.txt")
+write_tsv(beta_binomial_a_b_rna,"beta_binomial_a_b_rna.txt")

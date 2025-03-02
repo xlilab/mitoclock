@@ -2,7 +2,7 @@
 
 set -e -u
 
-OUT=whole_blood_mt_copy_number.txt
+OUT=mt_copy_number.txt
 
 calc_copy_number(){
     local FILE=${1}
