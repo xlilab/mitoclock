@@ -56,23 +56,23 @@ sed -i s#/path_to#/path_to_your_reference_file_directory#g 02_varaint_annotation
 ```
 
 # Pipeline
-## Variant calling
+## 1. Variant calling
 ```
 cd 01_variant_calling
 bash run_gatk_mitochondria_rna_pipeline_with_multi_tissues.sh tissue.list bam_dir
 ```
-## Variant annotation
+## 2. Variant annotation
 ```
 cd 02_varaint_annotations
 bash merge_single_vcfs_and_reheader.sh tissue.list out_dir
 bash merge_tissue_vcfs_and_annotate.sh out_dir
 ```
-## Copy number calculation
+## 3. Copy number calculation
 ```
 cd 03_copy_number_calculation
 bash estimate_RNA_copy_number.sh
 ```
-## Tables formation
+## 4. Tables formation
 ```
 cd 04_tables_formation
 Rscript estimate_sequencing_error_beta-binomial.R
@@ -82,7 +82,7 @@ Rscript generate_Igtex_T_CPN.R
 Rscript read_fixed_files.R
 Rscript filter_variants.R
 ```
-## Figure plotting
+## 5. Figure plotting
 Enter Rstudio, load data by runnig `load("04_tables_formation/analysis_base.Rdata")`, then execute codes in `05_figure_plotting`.
 
 # Run example
