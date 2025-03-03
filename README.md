@@ -1,5 +1,5 @@
 # Mitochondrial Clock of Aging
-Variant calling, filtering, plotting codes and supplementary tables for the manuscript "Tissue-specific mitochondrial clonal mosaicism as a molecular clock of aging".
+Variant calling, filtering, plotting codes and supplementary tables for the manuscript **"Tissue-specific mitochondrial clonal mosaicism as a molecular clock of aging"**.
 
 <img width="571" alt="image" src="https://github.com/xlilab/mitoclock/assets/7442902/c7c6fa6e-4645-42de-91bf-be169917be8d">
 
@@ -9,11 +9,11 @@ External software
 - cromwell-52.jar
 - GATK 4.2.0.0
 - picard 2.23.3
-- bwa
+- bwa 0.7.17
 - haplocheckCLI
-- bcftools
-- samtools
-- VEP
+- bcftools 1.12
+- samtools 1.13
+- ensembl-vep 101.0
 
 Unix packages
 - GNU parallel
@@ -38,10 +38,10 @@ R packages
 
 ## Download required files
 Download from https://console.cloud.google.com/storage/browser/genomics-public-data/references/hg38/v0 :
-- files included in 01_variant_calling/mitochondria_m2_RNA_wdl/MitochondriaPipeline.inputs.json
+- files included in `01_variant_calling/mitochondria_m2_RNA_wdl/MitochondriaPipeline.inputs.json`
 
-Download from dbGaP:
-- GTEx RNA bam files, these files should be organized by tissue
+Download from dbGaP :
+- GTEx RNA bam files, these files should be organized by tissues, for example `Adipose-Subcutaneous/GTEX-1117F-0226-SM-5GZZ7.Aligned.sortedByCoord.out.patched.md.bam`
 
 ## Setup
 Change the software path by running:
@@ -70,8 +70,6 @@ bash merge_tissue_vcfs_and_annotate.sh out_dir
 ## Copy number calculation
 ```
 cd 03_copy_number_calculation
-bash calc_gtex_mt_chr_coverage.sh sample.list
-bash calc_gtex_tissue_mt_copy_number.sh
 bash estimate_RNA_copy_number.sh
 ```
 ## Tables formation
@@ -84,3 +82,13 @@ Rscript generate_Igtex_T_CPN.R
 Rscript read_fixed_files.R
 Rscript filter_variants.R
 ```
+## Figure plotting
+Enter Rstudio, load data by runnig `load("04_tables_formation/analysis_base.Rdata")`, then execute codes in `05_figure_plotting`.
+
+# Run example
+To get unfiltered VCF files:
+```
+bash run_gatk_mitochondria_rna_pipeline_with_multi_tissues.sh 06_sample_input/tissue.list 06_sample_input
+```
+To plot figures (execute in Rstudio):
+Enter Rstudio, load data by runnig `load("06_sample_input/analysis_base.Rdata")`, then execute codes in `05_figure_plotting`.

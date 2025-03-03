@@ -13,7 +13,7 @@ mt_pipeline(){
     local NAME=$1
     local TISSUE=$2
     sed "s#\(/.\{2,\}/\).\{2,\}/GTEX-.\{2,\}\.Aligned#\1$TISSUE/$NAME\.Aligned#g" mitochondria_m2_RNA_wdl/MitochondriaPipeline.inputs.json > json/$NAME.json
-    java -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 -jar cromwell-52.jar run mitochondria_m2_RNA_wdl/MitochondriaPipeline.wdl --inputs json/$NAME.json
+    java -XX:ActiveProcessorCount=1 -XX:ConcGCThreads=1 -jar /path_to/cromwell-52.jar run mitochondria_m2_RNA_wdl/MitochondriaPipeline.wdl --inputs json/$NAME.json
 }
 
 export -f mt_pipeline
