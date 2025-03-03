@@ -90,5 +90,5 @@ To get unfiltered VCF files:
 ```
 bash run_gatk_mitochondria_rna_pipeline_with_multi_tissues.sh 06_sample_input/tissue.list 06_sample_input
 ```
-To plot figures (execute in Rstudio):
+To plot figures (execute in Rstudio):  
 Enter Rstudio, load data by runnig `load("06_sample_input/analysis_base.Rdata")`, then execute codes in `05_figure_plotting`.
