@@ -7,7 +7,7 @@ echo "Usage: sh $0 [ TISSUE ]"
 TISSUE=$1
 
 echo -e "Indiv\tCPN" > $TISSUE.copy_number.txt
-for i in `ls ~/data/datasets/gtex/RNA_bam/v8/RNAseq_bam/$TISSUE/*.bam`
+for i in `ls /path_to_bam_dir/$TISSUE/*.bam`
 do
 	ID=`echo $i |sed 's/.*\(GTEX-[0-9A-Z]\{4,5\}\)-.*/\1/'`
 	samtools idxstats $i |\

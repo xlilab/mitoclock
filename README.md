@@ -70,7 +70,7 @@ bash merge_tissue_vcfs_and_annotate.sh out_dir
 ## 3. Copy number calculation
 ```
 cd 03_copy_number_calculation
-bash estimate_RNA_copy_number.sh
+bash estimate_RNA_copy_number.sh tissue
 ```
 ## 4. Tables formation
 ```

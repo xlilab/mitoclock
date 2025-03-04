@@ -1,0 +1,54 @@
+tissue_site_detail	tissue_site_detail_abbr	tissue_site_detail_id	tissue_site	tissue_color_hex	tissue_color_rgb	tissue
+Adipose - Subcutaneous	ADPSBQ	Adipose_Subcutaneous	Adipose Tissue	#FF6600	255,102,0	Adipose-Subcutaneous
+Adipose - Visceral (Omentum)	ADPVSC	Adipose_Visceral_Omentum	Adipose Tissue	#FFAA00	255,170,0	Adipose-Visceral_Omentum
+Adrenal Gland	ADRNLG	Adrenal_Gland	Adrenal Gland	#33DD33	51,221,51	AdrenalGland
+Artery - Aorta	ARTAORT	Artery_Aorta	Blood Vessel	#FF5555	255,85,85	Artery-Aorta
+Artery - Coronary	ARTCRN	Artery_Coronary	Blood Vessel	#FFAA99	255170153	Artery-Coronary
+Artery - Tibial	ARTTBL	Artery_Tibial	Blood Vessel	#FF0000	255,0,0	Artery-Tibial
+Bladder	BLDDER	Bladder	Bladder	#AA0000	170,0,0	Bladder
+Brain - Amygdala	BRNAMY	Brain_Amygdala	Brain	#EEEE00	238,238,0	Brain-Amygdala
+Brain - Anterior cingulate cortex (BA24)	BRNACC	Brain_Anterior_cingulate_cortex_BA24	Brain	#EEEE00	238,238,0	Brain-Anteriorcingulatecortex_BA24
+Brain - Caudate (basal ganglia)	BRNCDT	Brain_Caudate_basal_ganglia	Brain	#EEEE00	238,238,0	Brain-Caudate_basalganglia
+Brain - Cerebellar Hemisphere	BRNCHB	Brain_Cerebellar_Hemisphere	Brain	#EEEE00	238,238,0	Brain-CerebellarHemisphere
+Brain - Cerebellum	BRNCHA	Brain_Cerebellum	Brain	#EEEE00	238,238,0	Brain-Cerebellum
+Brain - Cortex	BRNCTXA	Brain_Cortex	Brain	#EEEE00	238,238,0	Brain-Cortex
+Brain - Frontal Cortex (BA9)	BRNCTXB	Brain_Frontal_Cortex_BA9	Brain	#EEEE00	238,238,0	Brain-FrontalCortex_BA9
+Brain - Hippocampus	BRNHPP	Brain_Hippocampus	Brain	#EEEE00	238,238,0	Brain-Hippocampus
+Brain - Hypothalamus	BRNHPT	Brain_Hypothalamus	Brain	#EEEE00	238,238,0	Brain-Hypothalamus
+Brain - Nucleus accumbens (basal ganglia)	BRNNCC	Brain_Nucleus_accumbens_basal_ganglia	Brain	#EEEE00	238,238,0	Brain-Nucleusaccumbens_basalganglia
+Brain - Putamen (basal ganglia)	BRNPTM	Brain_Putamen_basal_ganglia	Brain	#EEEE00	238,238,0	Brain-Putamen_basalganglia
+Brain - Spinal cord (cervical c-1)	BRNSPC	Brain_Spinal_cord_cervical_c-1	Brain	#EEEE00	238,238,0	Brain-Spinalcord_cervicalc-1
+Brain - Substantia nigra	BRNSNG	Brain_Substantia_nigra	Brain	#EEEE00	238,238,0	Brain-Substantianigra
+Breast - Mammary Tissue	BREAST	Breast_Mammary_Tissue	Breast	#33CCCC	51204204	Breast-MammaryTissue
+Cells - Cultured fibroblasts	FIBRBLS	Cells_Cultured_fibroblasts	Skin	#AAEEFF	170238255	Cells-Culturedfibroblasts
+Cells - EBV-transformed lymphocytes	LCL	Cells_EBV-transformed_lymphocytes	Blood Vessel	#CC66FF	204102255	Cells-EBV-transformedlymphocytes
+Cervix - Ectocervix	CVXECT	Cervix_Ectocervix	Cervix Uteri	#FFCCCC	255204204	Cervix-Ectocervix
+Cervix - Endocervix	CVSEND	Cervix_Endocervix	Cervix Uteri	#CCAADD	204170221	Cervix-Endocervix
+Colon - Sigmoid	CLNSGM	Colon_Sigmoid	Colon	#EEBB77	238187119	Colon-Sigmoid
+Colon - Transverse	CLNTRN	Colon_Transverse	Colon	#CC9955	204,153,85	Colon-Transverse
+Esophagus - Gastroesophageal Junction	ESPGEJ	Esophagus_Gastroesophageal_Junction	Esophagus	#8B7355	139,115,85	Esophagus-GastroesophagealJunction
+Esophagus - Mucosa	ESPMCS	Esophagus_Mucosa	Esophagus	#552200	85,34,0	Esophagus-Mucosa
+Esophagus - Muscularis	ESPMSL	Esophagus_Muscularis	Esophagus	#BB9988	187153136	Esophagus-Muscularis
+Fallopian Tube	FLLPNT	Fallopian_Tube	Fallopian Tube	#FFCCCC	255204204	FallopianTube
+Heart - Atrial Appendage	HRTAA	Heart_Atrial_Appendage	Heart	#9900FF	153,0,255	Heart-AtrialAppendage
+Heart - Left Ventricle	HRTLV	Heart_Left_Ventricle	Heart	#660099	102,0,153	Heart-LeftVentricle
+Kidney - Cortex	KDNCTX	Kidney_Cortex	Kidney	#22FFDD	34255221	Kidney-Cortex
+Liver	LIVER	Liver	Liver	#AABB66	170187102	Liver
+Lung	LUNG	Lung	Lung	#99FF00	153,255,0	Lung
+Minor Salivary Gland	SLVRYG	Minor_Salivary_Gland	Salivary Gland	#99BB88	153187136	MinorSalivaryGland
+Muscle - Skeletal	MSCLSK	Muscle_Skeletal	Muscle	#AAAAFF	170170255	Muscle-Skeletal
+Nerve - Tibial	NERVET	Nerve_Tibial	Nerve	#FFD700	255,215,0	Nerve-Tibial
+Ovary	OVARY	Ovary	Ovary	#FFAAFF	255170255	Ovary
+Pancreas	PNCREAS	Pancreas	Pancreas	#995522	153,85,34	Pancreas
+Pituitary	PTTARY	Pituitary	Pituitary	#AAFF99	170255153	Pituitary
+Prostate	PRSTTE	Prostate	Prostate	#DDDDDD	221221221	Prostate
+Skin - Not Sun Exposed (Suprapubic)	SKINNS	Skin_Not_Sun_Exposed_Suprapubic	Skin	#0000FF	0,0,255	Skin-NotSunExposed_Suprapubic
+Skin - Sun Exposed (Lower leg)	SKINS	Skin_Sun_Exposed_Lower_leg	Skin	#7777FF	119119255	Skin-SunExposed_Lowerleg
+Small Intestine - Terminal Ileum	SNTTRM	Small_Intestine_Terminal_Ileum	Small Intestine	#555522	85,85,34	SmallIntestine-TerminalIleum
+Spleen	SPLEEN	Spleen	Spleen	#778855	119,136,85	Spleen
+Stomach	STMACH	Stomach	Stomach	#FFDD99	255221153	Stomach
+Testis	TESTIS	Testis	Testis	#AAAAAA	170170170	Testis
+Thyroid	THYROID	Thyroid	Thyroid	#CC6600	0,102,0	Thyroid
+Uterus	UTERUS	Uterus	Uterus	#FF66FF	255102255	Uterus
+Vagina	VAGINA	Vagina	Vagina	#FF5599	255,85,153	Vagina
+Whole Blood	WHLBLD	Whole_Blood	Blood	#FF00BB	255,0,187	WholeBlood
