@@ -17,7 +17,7 @@ Variant calling, filtering, plotting codes and supplementary tables for the manu
 6.  [Citation](#citation)
 7.  [Contact](#contact)
 
-# To run the code
+
 ## Dependencies
 External software
 - cromwell-52.jar
@@ -69,24 +69,24 @@ sed -i s#/path_to#/path_to_your_reference_file_directory#g 01_variant_calling/mi
 sed -i s#/path_to#/path_to_your_reference_file_directory#g 02_varaint_annotation/vep.sh
 ```
 
-# Pipeline Workflow
-## 1. Variant calling
+## Pipeline Workflow
+### 1. Variant Calling
 ```
 cd 01_variant_calling
 bash run_gatk_mitochondria_rna_pipeline_with_multi_tissues.sh tissue.list bam_dir
 ```
-## 2. Variant annotation
+### 2. Variant Annotation
 ```
 cd 02_varaint_annotations
 bash merge_single_vcfs_and_reheader.sh tissue.list out_dir
 bash merge_tissue_vcfs_and_annotate.sh out_dir
 ```
-## 3. Copy number calculation
+### 3. Copy Number Calculation
 ```
 cd 03_copy_number_calculation
 bash estimate_RNA_copy_number.sh tissue
 ```
-## 4. Tables formation
+### 4. Table Formation
 ```
 cd 04_tables_formation
 Rscript estimate_sequencing_error_beta-binomial.R
@@ -96,10 +96,10 @@ Rscript generate_Igtex_T_CPN.R
 Rscript read_fixed_files.R
 Rscript filter_variants.R
 ```
-## 5. Figure plotting
+### 5. Figure Plotting
 Enter Rstudio, load data by runnig `load("04_tables_formation/analysis_base.Rdata")`, then execute codes in `05_figure_plotting`.
 
-# Run example
+## Running the Example
 To get unfiltered VCF files:
 ```
 bash run_gatk_mitochondria_rna_pipeline_with_multi_tissues.sh 06_sample_input/tissue.list 06_sample_input
@@ -107,11 +107,11 @@ bash run_gatk_mitochondria_rna_pipeline_with_multi_tissues.sh 06_sample_input/ti
 To plot figures (execute in Rstudio):  
 Enter Rstudio, load data by runnig `load("06_sample_input/analysis_base.Rdata")`, then execute codes in `05_figure_plotting`.
 
-# Citation
+## Citation
 If you use this code or findings from our study, please cite:
 Wang, Z., et al. (2025). Mitochondrial clonal mosaicism encodes a biphasic molecular clock of aging. Nature Aging. (Details to be updated upon publication)
 
-# Contact
+## Contact
 For questions or issues with the code, please contact Xin Li at [lixin@sinh.ac.cn] or open an issue on this GitHub repository.
 
 
