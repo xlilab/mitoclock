@@ -1,5 +1,5 @@
-# Mitochondrial Clock of Aging
-Variant calling, filtering, plotting codes and supplementary tables for the manuscript **"Tissue-specific mitochondrial clonal mosaicism as a molecular clock of aging"**.
+# MitoClock: Mitochondrial Clock of Aging
+Variant calling, filtering, plotting codes and supplementary tables for the manuscript **"Mitochondrial Clonal Mosaicism Encodes a Biphasic Molecular Clock of Aging"**.
 
 <img width="571" alt="image" src="https://github.com/xlilab/mitoclock/assets/7442902/c7c6fa6e-4645-42de-91bf-be169917be8d">
 
