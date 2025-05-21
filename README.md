@@ -3,6 +3,20 @@ Variant calling, filtering, plotting codes and supplementary tables for the manu
 
 <img width="571" alt="image" src="https://github.com/xlilab/mitoclock/assets/7442902/c7c6fa6e-4645-42de-91bf-be169917be8d">
 
+## Table of Contents
+1.  [Dependencies](#dependencies)
+2.  [Required Data Downloads](#required-data-downloads)
+3.  [Setup Instructions](#setup-instructions)
+4.  [Pipeline Workflow](#pipeline-workflow)
+    * [1. Variant Calling](#1-variant-calling)
+    * [2. Variant Annotation](#2-variant-annotation)
+    * [3. Copy Number Calculation](#3-copy-number-calculation)
+    * [4. Table Formation](#4-table-formation)
+    * [5. Figure Plotting](#5-figure-plotting)
+5.  [Running the Example](#running-the-example)
+6.  [Citation](#citation)
+7.  [Contact](#contact)
+
 # To run the code
 ## Install the dependencies
 External software
@@ -92,3 +106,12 @@ bash run_gatk_mitochondria_rna_pipeline_with_multi_tissues.sh 06_sample_input/ti
 ```
 To plot figures (execute in Rstudio):  
 Enter Rstudio, load data by runnig `load("06_sample_input/analysis_base.Rdata")`, then execute codes in `05_figure_plotting`.
+
+# Citation
+If you use this code or findings from our study, please cite:
+Wang, Z., et al. (2025). Mitochondrial clonal mosaicism encodes a biphasic molecular clock of aging. Nature Aging. (Details to be updated upon publication)
+
+# Contact
+For questions or issues with the code, please contact Xin Li at [lixin@sinh.ac.cn] or open an issue on this GitHub repository.
+
+
