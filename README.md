@@ -18,7 +18,7 @@ Variant calling, filtering, plotting codes and supplementary tables for the manu
 7.  [Contact](#contact)
 
 # To run the code
-## Install the dependencies
+## Dependencies
 External software
 - cromwell-52.jar
 - GATK 4.2.0.0
@@ -50,14 +50,14 @@ R packages
 - ggpie
 - circlize
 
-## Download required files
+## Required Data Downloads
 Download from https://console.cloud.google.com/storage/browser/genomics-public-data/references/hg38/v0 :
 - files included in `01_variant_calling/mitochondria_m2_RNA_wdl/MitochondriaPipeline.inputs.json`
 
 Download from dbGaP :
 - GTEx RNA bam files, these files should be organized by tissues, for example `Adipose-Subcutaneous/GTEX-1117F-0226-SM-5GZZ7.Aligned.sortedByCoord.out.patched.md.bam`
 
-## Setup
+## Setup Instructions
 Change the software path by running:
 ```
 sed -i s#/path_to#/path_to_your_software_directory#g 01_variant_calling/mitochondria_m2_RNA_wdl/*wdl
@@ -69,7 +69,7 @@ sed -i s#/path_to#/path_to_your_reference_file_directory#g 01_variant_calling/mi
 sed -i s#/path_to#/path_to_your_reference_file_directory#g 02_varaint_annotation/vep.sh
 ```
 
-# Pipeline
+# Pipeline Workflow
 ## 1. Variant calling
 ```
 cd 01_variant_calling
