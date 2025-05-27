@@ -109,7 +109,7 @@ Enter Rstudio, load data by runnig `load("06_sample_input/analysis_base.Rdata")`
 
 ## Citation
 If you use this code or findings from our study, please cite:
-Wang, Z., et al. (2025). Mitochondrial clonal mosaicism encodes a biphasic molecular clock of aging. Nature Aging. (https://www.nature.com/articles/s43587-025-00890-6)
+Wang, Z., et al. (2025). Mitochondrial clonal mosaicism encodes a biphasic molecular clock of aging. Nature Aging. https://www.nature.com/articles/s43587-025-00890-6
 
 ## Contact
 For questions or issues with the code, please contact Xin Li at [lixin@sinh.ac.cn] or open an issue on this GitHub repository.
